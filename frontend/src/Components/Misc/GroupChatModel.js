@@ -48,7 +48,7 @@ const GroupChatModel = ({children}) => {
     
         try{
             setLoading(true);
-            const {data} = await axios.get(`http://localhost:5001/api/user?search=${query}`,config);
+            const {data} = await axios.get(`https://chat-app-qw9o.onrender.com/api/user?search=${query}`,config);
             setLoading(false);
             setSearchResult(data);
         }
@@ -70,7 +70,7 @@ const GroupChatModel = ({children}) => {
         }}
 
         try{
-            const {data} = await axios.post("http://localhost:5001/api/chat/group",{
+            const {data} = await axios.post("https://chat-app-qw9o.onrender.com/api/chat/group",{
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map(u => u._id))
             },config)

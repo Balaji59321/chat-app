@@ -73,7 +73,7 @@ const SideDrawer = () => {
     }
 
     try{
-        const {data} = await axios.get(`http://localhost:5001/api/user?search=${search}`,config);
+        const {data} = await axios.get(`https://chat-app-qw9o.onrender.com/api/user?search=${search}`,config);
         setLoading(false);
         setSearchResult(data);
     }
@@ -86,7 +86,7 @@ const SideDrawer = () => {
   const accessChat = async (userId) => {
       try{
         setLoadingChat(true);
-        const {data} = await axios.post("http://localhost:5001/api/chat",{userId},{headers: {
+        const {data} = await axios.post("https://chat-app-qw9o.onrender.com/api/chat",{userId},{headers: {
           "Content-Type" : "application/json",
           "Authorization" : `Bearer ${user.token}`
         }});

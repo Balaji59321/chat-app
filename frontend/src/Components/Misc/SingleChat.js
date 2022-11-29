@@ -11,7 +11,7 @@ import axios from 'axios';
 import ScrollableChats from '../ScrollableChats';
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5001";
+const ENDPOINT = "https://chat-app-qw9o.onrender.com";
 var socket,selectedChatCompare;
 
 const SingleChat = ({fetchAgain,setFetchAgain}) => {
@@ -40,7 +40,7 @@ const SingleChat = ({fetchAgain,setFetchAgain}) => {
                 }
             }
             setLoading(true);
-            const {data} = await axios.get(`http://localhost:5001/api/message/${selectedChat._id}`,config);
+            const {data} = await axios.get(`https://chat-app-qw9o.onrender.com/api/message/${selectedChat._id}`,config);
             setMessages(data);
             socket.emit("join chat",selectedChat._id);
         }
@@ -76,7 +76,7 @@ const SingleChat = ({fetchAgain,setFetchAgain}) => {
                     }
                 }
                 setNewMessage("");
-                const {data} = await axios.post(`http://localhost:5001/api/message`,{
+                const {data} = await axios.post(`https://chat-app-qw9o.onrender.com/api/message`,{
                     content: newMessage,
                     chatId: selectedChat._id
                 },config);

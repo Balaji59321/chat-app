@@ -48,7 +48,7 @@ const GroupChatModal = ({fetchAgain,setFetchAgain,fetchMessages}) => {
 
         try{
             setLoading(true);
-            let {data} = await axios.put("http://localhost:5001/api/chat/groupremove",{
+            let {data} = await axios.put("https://chat-app-qw9o.onrender.com/api/chat/groupremove",{
                 chatId: selectedChat._id,
                 userId: user1._id
             },config)
@@ -82,7 +82,7 @@ const GroupChatModal = ({fetchAgain,setFetchAgain,fetchMessages}) => {
 
         try{
             setLoading(true);
-            let {data} = await axios.put("http://localhost:5001/api/chat/groupadd",{
+            let {data} = await axios.put("https://chat-app-qw9o.onrender.com/api/chat/groupadd",{
                 chatId: selectedChat._id,
                 userId: user1._id
             },config)
@@ -107,7 +107,7 @@ const GroupChatModal = ({fetchAgain,setFetchAgain,fetchMessages}) => {
         
         try{
             setRenameLoading(true);
-            let {data} = await axios.put("http://localhost:5001/api/chat/rename",{
+            let {data} = await axios.put("https://chat-app-qw9o.onrender.com/api/chat/rename",{
                 chatId: selectedChat._id,
                 chatName: groupChatName
             },config)
@@ -134,7 +134,7 @@ const GroupChatModal = ({fetchAgain,setFetchAgain,fetchMessages}) => {
       
           try{
               setLoading(true);
-              const {data} = await axios.get(`http://localhost:5001/api/user?search=${search}`,config);
+              const {data} = await axios.get(`https://chat-app-qw9o.onrender.com/api/user?search=${search}`,config);
               await setSearchResult(data);
           }
           catch(Error){

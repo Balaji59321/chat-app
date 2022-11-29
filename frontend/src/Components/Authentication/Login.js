@@ -18,7 +18,7 @@ const Login = () => {
      }
      setLoading(true);
      try{
-        const {data} = await axios.post("http://localhost:5001/api/user/signup",{email,password});
+        const {data} = await axios.post("https://chat-app-qw9o.onrender.com/api/user/signup",{email,password});
         console.log(data);
         setTimeout(()=> {
           {loading && <CircularProgress />}

@@ -28,7 +28,7 @@ const SignUp =  () => {
 
    try{
       setLoading(true);
-      let {data} = await axios.post("http://localhost:5001/api/user",{name,email,password});
+      let {data} = await axios.post("https://chat-app-qw9o.onrender.com/api/user",{name,email,password});
       console.log(data);
       localStorage.setItem("user",JSON.stringify(data));
       setLoading(false);
