@@ -13,7 +13,6 @@ dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded());
 app.use(cors())
 
 app.use("/api/user",userRoutes);
@@ -22,7 +21,7 @@ app.use("/api/message",messageRoutes);
 
 // -------- deployment
 
-const __dirname1 = path.resolve("./../");
+const __dirname1 = path.resolve();
 console.log(__dirname1);
 if(process.env.NODE_ENV === 'production'){
     // console.log(path.join(__dirname1, './frontend/build'));
