@@ -3,7 +3,7 @@ import {Box, Tab, Tabs, Typography} from "@mui/material"
 import PropTypes from 'prop-types';
 import Login from '../Components/Authentication/Login';
 import SignUp from '../Components/Authentication/SignUp';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,11 +39,11 @@ function a11yProps(index) {
 }
 
 const HomePage = () => {
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if(user) history.push("/chats");
+    if(user) history("/chats");
   },[history])
 
   const [value, setValue] = React.useState(0);

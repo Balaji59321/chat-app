@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import Alert from '@mui/material/Alert';
 import axios from "axios";
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const SignUp =  () => {
 
@@ -13,7 +13,7 @@ const SignUp =  () => {
   const [confirmPassword,setConfirmPassword] = useState();
   const [pic,setPic] = useState();
   const [loading,setLoading] = useState(false);
-  const history = useHistory();
+  const history = useNavigate();
 
   const submitHandler = async () => {
    if(!name || !email || !password){
@@ -32,7 +32,7 @@ const SignUp =  () => {
       console.log(data);
       localStorage.setItem("user",JSON.stringify(data));
       setLoading(false);
-      history.push("/chats");
+      history("/chats");
    }
    catch(error){
     window.alert("Something went wrong .please try again");

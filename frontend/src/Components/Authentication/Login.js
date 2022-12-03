@@ -2,14 +2,14 @@ import { Button, CircularProgress, FormControl, TextField } from '@mui/material'
 import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useState } from 'react';
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
   const [loading,setLoading] = useState(false);
-  const history = useHistory();
+  const history = useNavigate();
 
   const submitHandler = async () => {
     if(!email || !password){
@@ -24,7 +24,7 @@ const Login = () => {
           {loading && <CircularProgress />}
         },2000)
         localStorage.setItem("user",JSON.stringify(data));
-        history.push("/chats");
+        history("/chats");
      }
      catch(error){
       window.alert("Something went wrong.Please try again");

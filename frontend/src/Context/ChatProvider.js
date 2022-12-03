@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState} from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ChatContext = createContext();
 
@@ -7,13 +7,13 @@ const ContextProvider = ({children}) => {
     const [user,setUser] = useState();
     const [selectedChat,setSelectedChat] = useState();
     const [chat,setChats] = useState([]);
-    const history = useHistory();
+    const history = useNavigate();
 
     useEffect(() => {
         const call = async () => {
             const userValue = await JSON.parse(localStorage.getItem("user"));
             if(!userValue){
-                history.push("/");
+                history("/");
             }
             await setUser(userValue);
         }

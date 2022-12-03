@@ -6,7 +6,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { ChatState } from '../../Context/ChatProvider';
 import ProfileModal from './ProfileModal';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ChatLoading from '../ChatLoading';
 import UserListItem from '../UserAvatar/UserListItem';
@@ -18,7 +18,7 @@ const SideDrawer = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
-  const history = useHistory();
+  const history = useNavigate();
 
   // Profile state
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,7 +33,7 @@ const SideDrawer = () => {
   const logOutHandler = () => {
     setAnchorEl(null);
     localStorage.removeItem("user");
-    history.push('/');
+    history('/');
   }
 
   function stringAvatar(name) {
@@ -73,7 +73,7 @@ const SideDrawer = () => {
     }
 
     try{
-        const {data} = await axios.get(`https://chat-app-qw9o.onrender.com/api/user?search=${search}`,config);
+        const {data} = await axios.get(`http://localhost:5001/api/user?search=${search}`,config);
         setLoading(false);
         setSearchResult(data);
     }
@@ -86,7 +86,7 @@ const SideDrawer = () => {
   const accessChat = async (userId) => {
       try{
         setLoadingChat(true);
-        const {data} = await axios.post("https://chat-app-qw9o.onrender.com/api/chat",{userId},{headers: {
+        const {data} = await axios.post("hhttp://localhost:5001/api/chat",{userId},{headers: {
           "Content-Type" : "application/json",
           "Authorization" : `Bearer ${user.token}`
         }});
